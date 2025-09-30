@@ -4,7 +4,7 @@ st.title("Stress Level Prediction")
 
 st.write("This is a simple app to predict stress levels based on user input.")
 st.write("Please enter your details below:")
-
+st.write("")
 
 Study_hours = st.number_input("Study Hours per Day", min_value=0, max_value=24, value=2)
 
