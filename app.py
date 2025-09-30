@@ -3,15 +3,15 @@ import joblib
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
-# Load the trained model
+# Load only the trained model
 MODEL_PATH = 'D:/Codes/Stress-Level-Prediction/Model/svm_model.joblib'
-SCALER_PATH = 'D:/Codes/Stress-Level-Prediction/Model/standard_scaler.joblib'  # Updated path
+
 
 try:
     model = joblib.load(MODEL_PATH)
-    scaler = joblib.load(SCALER_PATH)
+
 except FileNotFoundError:
-    st.error("Error: Model or Scaler file not found. Please check if the files exist in the correct location.")
+    st.error("Error: Model file not found. Please check if the file exists in the correct location.")
     st.stop()
 
 st.title("Stress Level Prediction")
@@ -49,8 +49,9 @@ if st.button('Predict Stress Level'):
     for i in range(input_data.shape[1]):
         input_data[:, i] = handle_outliers(input_data[:, i])
     
-    # Scale the features
-    input_scaled = scaler.transform(input_data)
+    # Create and fit StandardScaler on the input data
+    scaler = StandardScaler()
+    input_scaled = scaler.fit_transform(input_data)
     
     # Make prediction
     prediction = model.predict(input_scaled)[0]
@@ -68,3 +69,4 @@ if st.button('Predict Stress Level'):
         st.warning("⚠️ Monitor your stress levels and maintain a balanced lifestyle")
     else:
         st.success("✅ Keep maintaining your current lifestyle balance")
+        
