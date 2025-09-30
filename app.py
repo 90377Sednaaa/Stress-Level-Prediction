@@ -4,8 +4,15 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
-model = joblib.load('D:/Codes/Stress-Level-Prediction/Model/svm_model.joblib')
-scaler = joblib.load('standard_scaler.joblib')
+MODEL_PATH = 'D:/Codes/Stress-Level-Prediction/Model/svm_model.joblib'
+SCALER_PATH = 'D:/Codes/Stress-Level-Prediction/Model/standard_scaler.joblib'  # Updated path
+
+try:
+    model = joblib.load(MODEL_PATH)
+    scaler = joblib.load(SCALER_PATH)
+except FileNotFoundError:
+    st.error("Error: Model or Scaler file not found. Please check if the files exist in the correct location.")
+    st.stop()
 
 st.title("Stress Level Prediction")
 
