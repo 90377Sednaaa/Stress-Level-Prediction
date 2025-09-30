@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
-model = joblib.load('../Model/svm_model.joblib')
+model = joblib.load('D:/Codes/Stress-Level-Prediction/Model/svm_model.joblib')
 scaler = joblib.load('standard_scaler.joblib')
 
 st.title("Stress Level Prediction")
