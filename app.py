@@ -58,11 +58,12 @@ total_hours = (Study_Hours_Per_Day + Extracurricular_Hours_Per_Day +
 
 st.write(f"Total hours: {total_hours:.1f}/24")
 
+GPA = st.number_input("GPA (0.0 - 4.0)", min_value=0.0, max_value=4.0, value=3.0, step=0.1)
+
 if total_hours == 24.0:
     predict_button = st.button('Predict Stress Level')
 else:
     remaining = 24.0 - total_hours
     st.warning(f"Please allocate {remaining:.1f} more hours to complete your 24-hour schedule")
 
-GPA = st.number_input("GPA (0.0 - 4.0)", min_value=0.0, max_value=4.0, value=3.0, step=0.1)
 
