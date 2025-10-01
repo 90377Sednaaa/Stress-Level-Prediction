@@ -83,7 +83,13 @@ if abs(total_hours - 24.0) < 0.01:
         stress_map = {0: "High", 1: "Low", 2: "Moderate"}
         stress_level = stress_map[prediction]
         
-        st.write(f"Predicted Stress Level: {stress_level}")
+        if stress_level == "High":
+            st.markdown(f"<h3 style='color: red;'>Predicted Stress Level: {stress_level}</h3>", unsafe_allow_html=True)
+        elif stress_level == "Moderate":
+            st.markdown(f"<h3 style='color: orange;'>Predicted Stress Level: {stress_level}</h3>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<h3 style='color: green;'>Predicted Stress Level: {stress_level}</h3>", unsafe_allow_html=True)
+
 else:
     remaining = 24.0 - total_hours
     st.warning(f"Please allocate {remaining:.1f} more hours to complete your 24-hour schedule")
