@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 
 st.title("Student Stress Level Prediction")
+st.subheader("Disclaimer: This is a predictive model and results should be used for informational purposes only. If you're experiencing stress, please consult with a healthcare professional.")
 st.write("Instructions: Please input your daily hours for various activities. Ensure that the total does not exceed 24 hours and should be exactly 24 hours.")
 
 if 'total_hours' not in st.session_state:
