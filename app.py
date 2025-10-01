@@ -65,11 +65,13 @@ if abs(total_hours - 24.0) < 0.01:
     if predict_button:
         # Load the model, scaler and columns
         model_data = joblib.load('Model/svm_model.pkl')
-        model, scaler, columns = model_data
+        model = model_data['model']
+        scaler = model_data['scaler']
+        columns = model_data['columns']
         
         # Prepare input data
         input_data = [[Study_Hours_Per_Day, Extracurricular_Hours_Per_Day, Sleep_Hours_Per_Day, 
-                Social_Hours_Per_Day, Physical_Activity_Hours_Per_Day, GPA]]
+            Social_Hours_Per_Day, Physical_Activity_Hours_Per_Day, GPA]]
         
         # Scale the input data
         scaled_data = scaler.transform(input_data)
@@ -82,7 +84,6 @@ if abs(total_hours - 24.0) < 0.01:
         stress_level = stress_map[prediction]
         
         st.write(f"Predicted Stress Level: {stress_level}")
-        st.write("Prediction functionality to be implemented")
 else:
     remaining = 24.0 - total_hours
     st.warning(f"Please allocate {remaining:.1f} more hours to complete your 24-hour schedule")
